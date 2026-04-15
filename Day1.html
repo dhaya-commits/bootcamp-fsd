@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 1 Exercises</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .student-card {
+      border: 1px solid #333;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      background: #f9f9f9;
+    }
+    .form-container {
+      margin-top: 20px;
+    }
+    input, button {
+      margin: 5px 0;
+      padding: 8px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Exercise 1 & 2 — Student Card</h2>
+  <div id="student-container"></div>
+
+  <h2>Exercise 3, 4 & 5 — Form</h2>
+  <div class="form-container">
+    <form id="student-form">
+      <label for="studentName">Name:</label>
+      <input type="text" id="studentName" placeholder="Enter name" />
+
+      <label for="studentCourse">Course:</label>
+      <input type="text" id="studentCourse" placeholder="Enter course" />
+
+      <button type="button" id="submitBtn">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    // Exercise 1 & 2 — Component + Props
+    function StudentCard(props) {
+      return `
+        <div class="student-card">
+          <h3>${props.name}</h3>
+          <p>Course: ${props.course}</p>
+          <p>Status: ${props.status}</p>
+        </div>
+      `;
+    }
+
+    // Render a sample student card
+    const studentContainer = document.getElementById("student-container");
+    studentContainer.innerHTML = StudentCard({
+      name: "Alice Johnson",
+      course: "Computer Science",
+      status: "Active"
+    });
+
+    // Exercise 3 — State (simulate with variable)
+    let inputValue = "";
+
+    const nameInput = document.getElementById("studentName");
+    const courseInput = document.getElementById("studentCourse");
+
+    // Update state when typing
+    nameInput.addEventListener("input", (e) => {
+      inputValue = e.target.value;
+    });
+
+    // Exercise 4 — Event Handling
+    document.getElementById("submitBtn").addEventListener("click", () => {
+      console.log("Input Value:", inputValue);
+
+      // Exercise 5 — Form UI: Display new student card
+      studentContainer.innerHTML += StudentCard({
+        name: nameInput.value,
+        course: courseInput.value,
+        status: "Pending"
+      });
+
+      // Clear inputs
+      nameInput.value = "";
+      courseInput.value = "";
+      inputValue = "";
+    });
+  </script>
+
+</body>
+</html>
