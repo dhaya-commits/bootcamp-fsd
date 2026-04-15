@@ -16,5 +16,5 @@ Button click → log input
 Exercise 5 — Form UI
 Build form with 2 fields
 ## Task output:
-![alt text](image.png)
-![alt text](image-1.png)
+<img width="1553" height="966" alt="image" src="https://github.com/user-attachments/assets/bc4ade08-b526-436e-95a9-f0f22547ebad" />
+
